@@ -1,6 +1,8 @@
 package models
 
-import "github.com/google/uuid"
+import (
+	"github.com/google/uuid"
+)
 
 type ClientMembership struct {
 	ID               uuid.UUID `gorm:"type:UUID;primaryKey"`

@@ -1,6 +1,9 @@
-package entities
+package entity
 
-import "github.com/google/uuid"
+import (
+	"github.com/google/uuid"
+	"github.com/sachatarba/course-db/pkg/validator"
+)
 
 type Gym struct {
 	ID              uuid.UUID
@@ -14,3 +17,10 @@ type Gym struct {
 	MembershipTypes []MembershipType
 }
 
+func (g *Gym) Validate() bool {
+	if !validator.IsValidPhoneNumber(g.Phone) {
+		return false
+	}
+
+	return g.Name != "" && g.City !=  "" && g.Addres != ""
+}
